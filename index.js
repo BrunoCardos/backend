@@ -91,6 +91,7 @@ app.put('/persons/:id', (req, res) => {
                  item.name = req.body.name
                  item.phone = req.body.phone
                  res.send(listOfPersons);
+                 return
             }
         }
     } else{
