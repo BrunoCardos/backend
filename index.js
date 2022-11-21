@@ -16,7 +16,7 @@ let listOfPersons = [
     {
         "id": 12,
         "name": "Fernanda",
-        "phone": 3435343
+        "phone": 45398
     },
     {
         "id": 13,
@@ -48,6 +48,7 @@ app.get('/persons/:id', (req, res) => {
             }
         }
     } else{
+        res.status(404)
           res.send(listOfPersons);
     }
 
@@ -64,6 +65,7 @@ app.get('/persons', (req, res) => {
         for(item of listOfPersons){
             if (item.name == name){
                 res.send(item);
+                return;
             }
         }
     } else{
@@ -79,6 +81,25 @@ app.post('/persons', (req, res) => {
     listOfPersons.push(newPerson)
     res.send(listOfPersons)
 })
+
+
+app.put('/persons/:id', (req, res) => {
+    if(req.params.id!=undefined){
+
+        for(let item of listOfPersons){
+            if (item.id == req.params.id){
+                 item.name = req.body.name
+                 item.phone = req.body.phone
+                 res.send(listOfPersons);
+            }
+        }
+    } else{
+        res.status(404)
+          res.send(listOfPersons);
+    }
+
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
