@@ -95,9 +95,21 @@ app.put('/persons/:id', (req, res) => {
             }
         }
     } else{
-        res.status(404)
+          res.status(404)
           res.send(listOfPersons);
     }
+
+})
+
+app.put('/persons/:id', (req, res) => {
+
+        for(let pos in listOfPersons){
+            if (listOfPersons[pos].id == req.params.id){
+                 listOfPersons.splice(pos, 1);
+                 res.status(200)
+                 return
+            }
+        }
 
 })
 
