@@ -75,6 +75,37 @@ app.get('/persons', (req, res) => {
 
 })
 
+app.get('/calculate', (req, res) => {
+
+
+
+    let number1 = req.query.a;
+    let nunber2 = req.query.b;
+    let op = req.query.op;
+    
+
+    
+    
+    if( op == '+'){
+
+        let result = parseInt(number1) + parseInt(nunber2)
+        res.send( (result).toString() );
+
+    // } else if(op == '-'){
+    //     res.send(parseInt(number1) - parseInt(nunber2));
+    // } else if (op == '/'){
+    //     res.send(parseInt(number1) / parseInt(nunber2));       
+    // }else{
+    //     res.send(parseInt(number1) * parseInt(nunber2));       
+    // }
+    }
+
+    
+})
+
+
+
+
 app.post('/persons', (req, res) => {
     let newPerson = req.body
     newPerson.id = generateID()
