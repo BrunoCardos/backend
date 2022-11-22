@@ -156,7 +156,8 @@ app.post('/persons', (req, res) => {
     let newPerson = req.body
     newPerson.id = generateID()
     listOfPersons.push(newPerson)
-    res.send(listOfPersons)
+    res.status(201)
+    res.send(newPerson)
 })
 
 
