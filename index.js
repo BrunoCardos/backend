@@ -1,11 +1,13 @@
 const express = require('express')                             //importando
-var bodyParser = require('body-parser')                        //importando
+var bodyParser = require('body-parser')
+const cors = require('cors')                        //importando
  
 const app = express()
 const port = 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))          //necessario para body parser funcionar corretamente
-app.use(bodyParser.json())                                  //necessario para body parser funcionar corretamente
+app.use(bodyParser.json()) 
+app.use(cors())                                 //necessario para body parser funcionar corretamente
 
 let listOfPersons = [
     {
@@ -143,8 +145,6 @@ app.post('/calculate', (req, res) => {
 
     res.send( (result).toString() );
     
-    
-   
 
     
 })
