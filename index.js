@@ -75,30 +75,76 @@ app.get('/persons', (req, res) => {
 
 })
 
+function calc (num1, num2, op){
+    if( op == 'som'){
+
+        let result = num1 + num2
+        return result
+
+     } else if(op == 'mul'){
+
+        let result = num1 - num2
+        return result
+
+     } else if (op == 'div'){
+
+        let result = num1 / num2
+        return result
+
+     }else{
+        let result = num1 * num2
+        return result     
+     }
+    }
+
+
 app.get('/calculate', (req, res) => {
 
 
 
-    let number1 = req.query.a;
-    let nunber2 = req.query.b;
+    let number1 = parseInt(req.query.a);
+    let nunber2 =parseInt( req.query.b);
     let op = req.query.op;
     
 
     
     
-    if( op == '+'){
+    if( op == 'som'){
 
-        let result = parseInt(number1) + parseInt(nunber2)
-        res.send( (result).toString() );
+        let result = number1 + nunber2
+        return result
 
-    // } else if(op == '-'){
-    //     res.send(parseInt(number1) - parseInt(nunber2));
-    // } else if (op == '/'){
-    //     res.send(parseInt(number1) / parseInt(nunber2));       
-    // }else{
-    //     res.send(parseInt(number1) * parseInt(nunber2));       
-    // }
+     } else if(op == 'mul'){
+
+        let result = number1 - nunber2
+        return result
+
+     } else if (op == 'div'){
+
+        let result = number1 / nunber2
+        return result 
+
+     }else{
+        let result = number1 * nunber2
+        return result     
+     }
     }
+
+    
+)
+
+app.post('/calculate', (req, res) => {
+
+    let number1 = parseInt(req.body.a);
+    let nunber2 =parseInt( req.body.b);
+    let op = req.body.op;
+    
+    result = calc(number1, nunber2, op)
+
+    res.send( (result).toString() );
+    
+    
+   
 
     
 })
